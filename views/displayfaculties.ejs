@@ -1,0 +1,102 @@
+
+<html>
+  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <nav class="navbar navbar-light bg-light">
+      <a class="navbar-brand" href="#" style="display: flex; flex-direction:row;"">
+        <img src="/images/universtiylogo.png" width="40" height="30" class="d-inline-block align-top" alt="">
+      <span style="display: flex;padding-left: 20px ; font-size: larger;"><%=aresult.adminname%></span>
+      </a>
+      <span>
+      <img src="/images/<%=aresult.image%>" style="width: 50;">
+  
+          <a href="/admin/logout" class="navbar-brand">logout</a>
+      </span>
+      
+    </nav>
+    <div class="form-row">
+    <div class="form-group col-md-2" style="background:url(http://localhost:3000/images/uni.jpeg);background-size: cover; height: 100vh;  background-repeat:no-repeat ; background-position:top;">
+      <ul class="nav flex-column">
+          <li class="nav-item">
+            <a class="nav-link active" href="/faculty/facultyinterface" style="font-size: 20; color: #fff; margin: 15px;"><i class="fas fa-user-graduate"></i> Add faculties</a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link active" href="/faculty/showallfaculties" style="font-size: 20; color: #fff; margin: 15px;"><i class="fas fa-th-list"></i>List faculties</a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link active" href="/faculty/searchbyid" style="font-size: 20; color: #fff; margin: 15px;"><i class="fas fa-search"></i>Search</a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link active" href="/admin/logout" style="font-size: 20; color: #fff; margin: 15px;"><i class="fas fa-sign-out-alt"></i>log out</a>
+          </li>
+        </ul>
+      </div>
+    <div class="form-group col-md-10">
+        
+      <div class="container">
+
+        <div class="row rowstyle">
+          <div class="col" style="color:firebrick;font-size:20px; font-weight:bold; letter-spacing:1px ">
+           <img src="/images/faculty.png" width=40/>
+           <a href="/faculty/facultyinterface">Add New Faculty</a>  
+          </div> 
+    
+      </div>
+    
+        <table class="table table-striped">
+            <thead>
+              <tr>
+                <th scope="col">facultyid</th>
+                <th scope="col">firstname</th>
+                <th scope="col">mobileno</th>
+                <th scope="col">email</th>
+                <th scope="col">address</th>
+              
+                <th scope="col">qualification</th>
+                <th scope="col">department</th>
+                <th scope="col">image</th>
+                <th scope="col">update</th>
+    
+              </tr>
+            </thead>
+           
+    <% if(result){ result.map((item)=>{ %>
+        <tbody>
+    <tr>
+        <td><%=item.facultyid%></td>
+        <td><%=item.firstname%>
+        <%=item.lastname%><br>
+        <%=item.birthdate%><br>
+        <%=item.gender%></td>
+        <td><%=item.mobileno%></td>
+        <td><%=item.email%></td>
+        <td><%=item.address%><br>
+        <%=item.state %>
+        <%=item.city %>
+        <%=item.zipcode%></td>
+        <td><%=item.qualification%></td>
+        <td><%=item.department%></td>
+        <td><a href="/faculty/showimage?fid=<%=item.facultyid%>&fn=<%=item.firstname%>&ln=<%=item.lastname%>&image=<%=item.image%>"><img src="/images/<%=item.image%>" width="50"></a></td>
+        <td><a href="/faculty/displaybyid?fid=<%=item.facultyid%>">Edit/Delete</a></td>
+    
+    
+    </tr>
+    
+    
+    <% }) } else{%>
+       
+        <h3>server error</h3>
+    <%}%>
+    </tbody>
+    </table>
+    </div>
+
+   </div>
+    </div> 
+
+
+
+
+    
+</html>

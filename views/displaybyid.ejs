@@ -1,0 +1,188 @@
+<html>
+    <head>
+        <title>Edit/Delete</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="/javascripts/project.js"></script>
+    
+      <style>
+            .root{
+ display: flex;
+ width: 100%;
+ height: 100%;
+background: #FFF;
+border-radius: 2%;
+justify-content:center;
+align-items: center;
+}
+
+
+
+.subdiv{
+ display: flex;
+ width: 920px;
+background:#dfe6e9;
+border-radius: 2%;
+justify-content:center;
+flex-direction: column;
+padding: 20px;
+}
+.rowstyle{
+    width:900px;
+    margin:10px;
+}
+    </style>
+</head>
+
+<body>
+  <nav class="navbar navbar-light bg-light">
+    <a class="navbar-brand" href="#" style="display: flex; flex-direction:row;"">
+      <img src="/images/universtiylogo.png" width="40" height="30" class="d-inline-block align-top" alt="">
+    <span style="display: flex;padding-left: 20px ; font-size: larger;"><%=bresult.adminname%></span>
+    </a>
+    <span>
+    <img src="/images/<%=bresult.image%>" style="width: 50;">
+
+        <a href="/admin/logout" class="navbar-brand">logout</a>
+    </span>
+    
+  </nav>
+  <div class="form-row">
+  <div class="form-group col-md-2" style="background:url(http://localhost:3000/images/uni.jpeg);background-size: cover; height: 100vh;  background-repeat:no-repeat ; background-position:top;">
+    <ul class="nav flex-column">
+        <li class="nav-item">
+          <a class="nav-link active" href="/faculty/facultyinterface" style="font-size: 20; color: #fff; margin: 15px;"><i class="fas fa-user-graduate"></i> Add faculties</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link active" href="/faculty/showallfaculties" style="font-size: 20; color: #fff; margin: 15px;"><i class="fas fa-th-list"></i>List faculties</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link active" href="/faculty/searchbyid" style="font-size: 20; color: #fff; margin: 15px;"><i class="fas fa-search"></i>Search</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link active" href="/admin/logout" style="font-size: 20; color: #fff; margin: 15px;"><i class="fas fa-sign-out-alt"></i>log out</a>
+        </li>
+      </ul>
+    </div>
+  <div class="form-group col-md-10">
+     
+  <form action="/faculty/editdelete">
+    <div class="root">
+        <div class="subdiv">
+
+            <div class="row rowstyle">
+                <div class="col" style="color:firebrick;font-size:20px; font-weight:bold; letter-spacing:1px ">
+                 <img src="/images/faculty.png" width=40/>
+                    Faculty Interface[Edit/Delete]
+                </div> 
+                <div class="col" style="color:firebrick;font-size:20px; font-weight:bold; letter-spacing:1px ">
+                <a href="/faculty/showallfaculties">List Faculty</a>  
+                </div>
+            </div>
+
+            <div class="row rowstyle">
+              <input type="hidden" name="facultyid" value="<%=data.facultyid%>">
+                <div class="col">
+                    <input type="text" value="<%=data.firstname%>" class="form-control" name="firstname" placeholder="firstname">
+                </div>
+
+                <div class="col">
+                    <input type="text" value="<%=data.lastname%>" class="form-control" name="lastname" placeholder="lastname">
+                </div>
+            </div>
+
+            <div class="row rowstyle">
+                <div class="col">
+                    <input type="date" value="<%=data.birthdate%>" class="form-control" name="birthdate" placeholder="Date Birth">
+                </div>
+
+                <% if(data.gender=="male"){%>
+                <div class="col"  style="display: flex; align-items: center;justify-content: center;">
+                    <i class="fas fa-male" style="font-size:35; color:darkgreen"></i>
+                    <input type="radio" checked class="form-control" value="male" name="gender" style="margin-left: 5px;">
+                    <i class="fas fa-female" style="font-size:35; color:hotpink; "></i>
+                    <input type="radio" checked class="form-control" value="female" name="gender" style="margin-left: 5px;">
+                </div>
+                <%} else{%>
+                  <div class="col"  style="display: flex; align-items: center;justify-content: center;">
+                    <i class="fas fa-male"  style="font-size:35; color:darkgreen"></i>
+                    <input type="radio" class="form-control" value="male" name="gender" style="margin-left: 5px;">
+                    <i class="fas fa-female" checked style="font-size:35; color:hotpink; "></i>
+                    <input type="radio" class="form-control" value="female" name="gender" style="margin-left: 5px;">
+                </div>
+                <%}%>
+
+
+            </div>
+
+            <div class="row rowstyle">
+                <div class="col">
+                  <input type="text" value="<%=data.mobileno%>" class="form-control" placeholder="Mobile Number" name="mobileno">
+                </div>
+                <div class="col">
+                  <input type="text" value="<%=data.email%>" class="form-control" placeholder="Email Address" name="email">
+                </div>
+                </div>
+
+                <div class="row rowstyle">
+                    <div class="col">
+                      <input type="text" value="<%=data.address%>" class="form-control" placeholder="Address" name="address">
+                    </div>
+                  </div>
+
+                  <div class="row rowstyle">
+                    <div class="col">
+                      <select class="form-control" id="state" name="state">
+                        <option value="<%=data.state%>"><%=data.statename%></option>
+                        </select>
+
+                    </div>
+                    <div class="col">
+                      <select class="form-control" id="city" name="city">
+                        <option value="<%=data.city%>"><%=data.cityname%></option>
+
+                        </select>
+                    </div>
+                    <div class="col">
+                      <input type="text" value="<%=data.zipcode%>" class="form-control" id="zipcode" placeholder="Zipcode" name="zipcode">
+                    </div>
+                           
+                  </div>
+
+                  <div class="row rowstyle">
+                    <div class="col">
+                      <input type="text" value="<%=data.qualification%>" class="form-control" placeholder="Qualification" name="qualification">
+                    </div>
+                    <div class="col">
+                  <select class="form-control" name="department" >
+                    <option><%=data.department%></option>
+                    <option>Computer Science</option>
+                    <option>Information Technology</option>
+                    <option>Civil</option>
+                    <option>Electrical</option>
+                    </select>
+                    </div>
+                  </div>
+
+                 
+
+                  <div class="row rowstyle" >
+                    <div class="col" style="display: flex; align-items: center;justify-content: center;" >
+                      <button style="font-size: 18; width: 350;" name="btn" value="Edit" type="submit" class="btn btn-primary">Edit</button>
+                    </div>
+                    <div class="col" style="display: flex; align-items: center;justify-content: center;">
+                      <button  style="font-size: 18; width: 350;" name="btn" value="Delete" type="submit" class="btn btn-primary">Delete</button>
+                    </div>
+                    
+                  </div>
+        </div>
+    </div> 
+  </form> 
+ </div>
+  </div> 
+
+
+
+</body>
+</html>

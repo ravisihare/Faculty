@@ -1,0 +1,112 @@
+<html>
+    <head>
+        <title>faculty interface</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="/javascripts/project.js"></script>
+    
+      <style>
+            .root{
+ display: flex;
+ width: 100%;
+ height: 100%;
+background: #FFF;
+border-radius: 2%;
+justify-content:center;
+align-items: center;
+}
+
+
+
+.subdiv{
+ display: flex;
+ width: 920px;
+/* background:#dfe6e9; */
+border-radius: 2%;
+justify-content:center;
+flex-direction: column;
+padding: 20px;
+}
+.rowstyle{
+    width:900px;
+    margin:10px;
+}
+    </style>
+</head>
+
+<body>
+  <nav class="navbar navbar-light bg-light">
+    <a class="navbar-brand" href="#" style="display: flex; flex-direction:row;">
+      <img src="/images/universtiylogo.png" width="40" height="30" class="d-inline-block align-top" alt="">
+
+     <span style="display: flex;padding-left: 20px ; font-size: larger;"><%=result.adminname%></span>
+    </a>
+    <span>
+    <img src="/images/<%=result.image%>" style="width: 50;">
+
+        <a href="/admin/logout" class="navbar-brand">logout</a>
+    </span>
+  </nav>
+  <div class="form-row">
+  <div class="form-group col-md-2" style="background:url(http://localhost:3000/images/uni.jpeg);background-size: cover; height: 100vh;  background-repeat:no-repeat ; background-position:top;">
+    <ul class="nav flex-column">
+        <li class="nav-item">
+          <a class="nav-link active" href="/faculty/facultyinterface" style="font-size: 20; color: #fff; margin: 15px;"><i class="fas fa-user-graduate"></i> Add faculties</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link active" href="/faculty/showallfaculties" style="font-size: 20; color: #fff; margin: 15px;"><i class="fas fa-th-list"></i>List faculties</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link active" href="/faculty/searchbyid" style="font-size: 20; color: #fff; margin: 15px;"><i class="fas fa-search"></i>Search</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link active" href="/admin/logout" style="font-size: 20; color: #fff; margin: 15px;"><i class="fas fa-sign-out-alt"></i>log out</a>
+        </li>
+      </ul>
+    </div>
+  <div class="form-group col-md-10">
+    
+    <form action="/faculty/displaybyid" >
+      <div class="root">
+          <div class="subdiv bg-light">
+  
+              <div class="row rowstyle">
+                  <div class="col" style="color:firebrick;font-size:20px; font-weight:bold; letter-spacing:1px ">
+                   <img src="/images/faculty.png" width=40/>
+                      Faculty Interface
+                  </div> 
+                  <div class="col" style="color:firebrick;font-size:20px; font-weight:bold; letter-spacing:1px ">
+                  <a href="/faculty/showallfaculties">List Faculty</a>  
+                  </div>
+              </div>
+  
+              <div class="row rowstyle">
+                  <div class="col">
+                      <input type="text" class="form-control" name="fid" placeholder="Enter faculty id">
+                  </div>
+                </div>
+                    <div class="row rowstyle" >
+                      <div class="col" style="display: flex; align-items: center;justify-content: center;" >
+                        <button style="font-size: 18; width: 350;" type="submit" class="btn btn-primary">Submit</button>
+                      </div>
+                      <div class="col" style="display: flex; align-items: center;justify-content: center;">
+                        <button  style="font-size: 18; width: 350;" type="reset" class="btn btn-primary">Reset</button>
+                      </div>
+                      
+                      <div class="row rowstyle" >
+                      <div class="col" style="display: flex; align-items: center;justify-content: center; font-size:xx-large; font-weight: bolder;" >
+                        <%=msg%>
+                        </div>
+                        </div>
+                   
+                    </div>
+  
+          </div>
+      </div> 
+    </form> 
+ </div>
+  </div> 
+  
+</body>
+</html>
